@@ -26,12 +26,29 @@ class Block:
 # Now the class for the Blockchain which is a chain of the blocks
 
 class Blockchain:
+    
+    difficulty = 2
+    
     def __init__(self): 
        self.unconfirmed_transactions = [] # not mined yet
        self.chain = []
        self.create_genesis_block()
 
-    difficulty = 2
+    
+
+    
+    def create_genesis_block(self):
+        # creating the first block here 
+        genesis_block = Block(0,[],time.time(),"0");
+        genesis_block.hash = genesis_block.compute_hash();
+        self.chain.append(genesis_block);
+
+
+    # Setting a getter method for retrieving the last block 
+    @property
+    def last_block(self):
+        return self.chain[-1] 
+
    
 
     
